@@ -3,9 +3,9 @@ import { extendTheme } from 'native-base';
 export default extendTheme({
   colors: {
     primary: {
-      300: '#D56B6599',
+      300: '#D56B6533',
       400: '#D56B65',
-      500: '#1B172A',
+      500: '#0D0B3A',
     },
   },
 });

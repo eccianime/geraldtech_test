@@ -8,6 +8,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
+import CustomDrawer from '../components/CustomDrawer';
 
 export type DrawerContextProps = {
   progress: number;
@@ -57,7 +58,9 @@ const DrawerProvider = ({ children }: { children: ReactNode }) => {
         w='full'
         h='full'
         style={drawerStyles}
-      />
+      >
+        <CustomDrawer />
+      </AnimatedVStack>
       <AnimatedVStack
         borderTopRadius={30}
         overflow={'hidden'}

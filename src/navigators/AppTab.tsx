@@ -42,7 +42,7 @@ export default function AppTab() {
             />
           }
         />
-        <Text ml={4} fontSize={'2xl'} color='#9B9B8B'>
+        <Text ml={4} fontSize={'2xl'} color='#9B9B8B' letterSpacing={'2xl'}>
           START
         </Text>
       </HStack>
