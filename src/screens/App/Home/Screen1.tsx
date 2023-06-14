@@ -1,10 +1,9 @@
-import { View, Text } from 'react-native';
-import React from 'react';
+import { Text, VStack } from 'native-base';
 
 export default function Screen1() {
   return (
-    <View>
+    <VStack flexGrow={1}>
       <Text>Screen1</Text>
-    </View>
+    </VStack>
   );
 }
