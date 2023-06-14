@@ -1,5 +1,6 @@
 import { VStack } from 'native-base';
 import { ReactNode, createContext, useContext } from 'react';
+import { Dimensions } from 'react-native';
 import Animated, {
   Easing,
   interpolate,
@@ -18,29 +19,28 @@ const AnimatedVStack = Animated.createAnimatedComponent(VStack);
 
 const DrawerProvider = ({ children }: { children: ReactNode }) => {
   const progress = useSharedValue(0);
-  const contentRotateZ = useSharedValue('0deg');
 
   const toggleDrawer = () => {
     progress.value = withTiming(progress.value === 1 ? 0 : 1, {
       duration: 200,
       easing: Easing.linear,
     });
-    contentRotateZ.value = withTiming(
-      progress.value === 1 ? '0deg' : '-20deg',
-      {
-        duration: 200,
-        easing: Easing.linear,
-      }
-    );
   };
 
   const drawerStyles = useAnimatedStyle(() => ({
     marginTop: interpolate(progress.value, [0, 1], [0, 35]),
   }));
 
+  const screenWidth = Dimensions.get('screen').width * 0.7;
+
   const contentStyles = useAnimatedStyle(() => ({
-    marginLeft: interpolate(progress.value, [0, 1], [0, 200]),
+    marginLeft: interpolate(progress.value, [0, 1], [0, screenWidth]),
     marginTop: interpolate(progress.value, [0, 1], [0, 50]),
+    transform: [
+      {
+        rotateZ: `${-progress.value * 10}deg`,
+      },
+    ],
   }));
 
   return (
@@ -64,16 +64,7 @@ const DrawerProvider = ({ children }: { children: ReactNode }) => {
         position={'absolute'}
         w='full'
         h='full'
-        style={[
-          contentStyles,
-          {
-            transform: [
-              {
-                rotateZ: contentRotateZ.value,
-              },
-            ],
-          },
-        ]}
+        style={contentStyles}
       >
         {children}
       </AnimatedVStack>
