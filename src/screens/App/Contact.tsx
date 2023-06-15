@@ -1,10 +1,9 @@
-import { View, Text } from 'react-native';
-import React from 'react';
+import { Center, Text } from 'native-base';
 
 export default function Contact() {
   return (
-    <View>
-      <Text>Contact</Text>
-    </View>
+    <Center flexGrow={1}>
+      <Text fontSize={'xl'}>Contact</Text>
+    </Center>
   );
 }

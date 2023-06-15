@@ -42,6 +42,8 @@ const DrawerProvider = ({
   const contentStyles = useAnimatedStyle(() => ({
     marginLeft: interpolate(progress.value, [0, 1], [0, screenWidth]),
     marginTop: interpolate(progress.value, [0, 1], [0, 50]),
+    borderRadius: interpolate(progress.value, [0, 1], [0, 30]),
+    paddingTop: interpolate(progress.value, [0, 1], [30, 0]),
     transform: [
       {
         rotateZ: `${-progress.value * 10}deg`,
@@ -67,7 +69,7 @@ const DrawerProvider = ({
         {customDrawer}
       </AnimatedVStack>
       <AnimatedVStack
-        borderTopRadius={30}
+        bg='white'
         overflow={'hidden'}
         position={'absolute'}
         w='full'
