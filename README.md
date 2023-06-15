@@ -33,3 +33,5 @@ or
 ### Result
 
 The result should be as seen in the next video, hope you like it.
+
+https://github.com/eccianime/geraldtech_test/blob/master/assets/demo.gif
