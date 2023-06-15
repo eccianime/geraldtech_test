@@ -8,7 +8,6 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import CustomDrawer from '../components/CustomDrawer';
 
 export type DrawerContextProps = {
   progress: number;
@@ -18,7 +17,13 @@ export type DrawerContextProps = {
 const DrawerContext = createContext({} as DrawerContextProps);
 const AnimatedVStack = Animated.createAnimatedComponent(VStack);
 
-const DrawerProvider = ({ children }: { children: ReactNode }) => {
+const DrawerProvider = ({
+  children,
+  customDrawer,
+}: {
+  children: ReactNode;
+  customDrawer: ReactNode;
+}) => {
   const progress = useSharedValue(0);
 
   const toggleDrawer = () => {
@@ -59,7 +64,7 @@ const DrawerProvider = ({ children }: { children: ReactNode }) => {
         h='full'
         style={drawerStyles}
       >
-        <CustomDrawer />
+        {customDrawer}
       </AnimatedVStack>
       <AnimatedVStack
         borderTopRadius={30}
